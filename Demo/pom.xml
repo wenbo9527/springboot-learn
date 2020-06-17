@@ -17,6 +17,7 @@
     <module>loglearn</module>
     <module>multiple-datasource</module>
     <module>springboot-redis</module>
+    <module>springboot-websocket-redis</module>
   </modules>
 
   <properties>
