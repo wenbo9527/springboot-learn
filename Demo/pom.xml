@@ -18,6 +18,7 @@
     <module>multiple-datasource</module>
     <module>springboot-redis</module>
     <module>springboot-websocket-redis</module>
+    <module>springboot-thread</module>
   </modules>
 
   <properties>
