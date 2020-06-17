@@ -1,0 +1,11 @@
+14:23:07.274 [main] INFO  com.example.loglearn.LoglearnApplication - Starting LoglearnApplication on V12CNDSZ01DEVP9 with PID 30728 (C:\Users\60055859\Desktop\SpringBootLearn\Demo\loglearn\target\classes started by 60055859 in C:\Users\60055859\Desktop\SpringBootLearn\Demo)
+14:23:07.286 [main] DEBUG com.example.loglearn.LoglearnApplication - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+14:23:07.287 [main] INFO  com.example.loglearn.LoglearnApplication - No active profile set, falling back to default profiles: default
+14:23:08.582 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-127.0.0.1-9000"]
+14:23:08.583 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+14:23:08.584 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.35]
+14:23:08.718 [main] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+14:23:09.129 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-127.0.0.1-9000"]
+14:23:09.195 [main] INFO  com.example.loglearn.LoglearnApplication - Started LoglearnApplication in 2.466 seconds (JVM running for 4.229)
+14:23:09.198 [main] ERROR com.example.loglearn.LoglearnApplication - 第一次输出错误日志
+14:23:12.002 [http-nio-127.0.0.1-9000-exec-1] INFO  org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'

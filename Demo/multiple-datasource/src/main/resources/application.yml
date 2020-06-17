@@ -1,0 +1,11 @@
+spring:
+  second-datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: WENbo9533
+    jdbc-url: jdbc:mysql://localhost:3306/websocket?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+  third-datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    jdbc-url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    username: root
+    password: WENbo9533

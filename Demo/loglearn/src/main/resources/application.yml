@@ -1,0 +1,7 @@
+logging:
+  config: loglearn\src\main\resources\log4j2.xml
+  level:
+    root: trace
+server:
+  port: 9000
+  address: localhost

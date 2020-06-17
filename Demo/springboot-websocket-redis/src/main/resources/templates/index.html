@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="/js/jquery-3.3.1.js"></script>
+    <title>聊天室</title>
+</head>
+<body>
+    <div>
+        <input name="userName" type="text" placeholder="请输入名字以加入聊天室"><input name="come" onclick="comeMeeting()" type="button" value="加入会议室">
+    </div>
+    <div name="chat" style="display: none">
+        <input id="input_id" type="text" /><button onclick="sendMessage()">发送</button>    <button onclick="closeWebsocket()">关闭</button>
+        <div id="message_id"></div>
+    </div>
+</body>
+<script>
+    var webSocket = null;
+
+    function comeMeeting(){
+        var userName = $("[name=userName]").val();
+        if(userName == ""){
+            alert("请输入你的名字");
+        }else{
+            if("WebSocket" in window){
+                webSocket = new WebSocket("ws://localhost:8081/websocket/聊天室/"+userName);
+            }else{
+                alert("浏览器不支持websocket");
+            }
+
+            webSocket.onopen = function(event){
+                setMessage("打开连接");
+            }
+
+            webSocket.onclose = function(event){
+                setMessage("关闭连接");
+                $("[name=userName]").prop("readonly",false);
+                $("[name=come]").show();
+                $("[name=chat]").hide();
+            }
+
+            webSocket.onmessage = function(event){
+                setMessage(event.data);
+            }
+
+            webSocket.onerror = function(event){
+                setMessage("连接异常");
+            }
+
+            //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
+            window.onbeforeunload = function(){
+                closeWebsocket();
+            }
+
+            $("[name=userName]").prop("readonly",true);
+            $("[name=come]").hide();
+            $("[name=chat]").show();
+        }
+    }
+
+
+
+    //关闭websocket
+    function closeWebsocket(){
+        //3代表已经关闭
+        if(3!=webSocket.readyState){
+            webSocket.close();
+        }else{
+            alert("websocket之前已经关闭");
+        }
+    }
+
+    //将消息显示在网页上
+    function setMessage(message){
+        document.getElementById('message_id').innerHTML += message + '<br/>';
+    }
+
+    //发送消息
+    function sendMessage(){
+        //1代表正在连接
+        if(1==webSocket.readyState){
+            var message = document.getElementById('input_id').value;
+            //setMessage(message);
+            webSocket.send(message);
+        }else{
+            alert("websocket未连接");
+        }
+        document.getElementById('input_id').value="";
+        document.getElementById('input_id').focus();
+    }
+
+</script>
+</html>

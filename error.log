@@ -1,0 +1,5 @@
+09:53:20.237 [main] ERROR com.example.loglearn.LoglearnApplication - 第一次输出错误日志
+11:14:12.661 [main] ERROR com.example.loglearn.LoglearnApplication - 第一次输出错误日志
+14:00:37.896 [main] ERROR com.example.loglearn.LoglearnApplication - 第一次输出错误日志
+14:04:30.717 [main] ERROR com.example.loglearn.LoglearnApplication - 第一次输出错误日志
+14:23:09.198 [main] ERROR com.example.loglearn.LoglearnApplication - 第一次输出错误日志
