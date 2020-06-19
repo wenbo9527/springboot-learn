@@ -2,12 +2,7 @@ server:
   port: 8081
   address: 0.0.0.0
 
-#数据库配置信息
-  datasource:
-    username: root
-    password: WENbo9533
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
-    driver-class-name: com.mysql.cj.jdbc.Driver
+
 #Redis配置
 ##Redis数据库索引（默认为0）
 spring:
@@ -16,6 +11,12 @@ spring:
 #    prefix: classpath:static/
 #    cache: false
 #    suffix: .html
+  #数据库配置信息
+  datasource:
+    username: root
+    password: WENbo9533
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     database: 0
     host: 127.0.0.1
@@ -29,9 +30,9 @@ spring:
 
 
 #mybatis
-#mybatis:
-#  mapper-locations: classpath:mapper/*.xml
-#  type-aliases-package: com.example.springbootredis.entity
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.springbootredis.entity
 
 #配置log
 #logging:

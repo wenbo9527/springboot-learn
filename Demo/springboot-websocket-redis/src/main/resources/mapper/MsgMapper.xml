@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootwebsocketredis.dao.MsgDao">
+
+    <select id="findMsgAll" resultType="com.example.springbootwebsocketredis.entity.Msg">
+        SELECT * FROM MSG
+    </select>
+
+    <insert id="insertSingle" parameterType="com.example.springbootwebsocketredis.entity.Msg">
+        INSERT INTO MSG VALUES(#{msg.username},#{msg.msg})
+    </insert>
+
+</mapper>

@@ -13,6 +13,7 @@ public class AsyncTaskService {
 
     private Logger logger = LoggerFactory.getLogger(AsyncTaskService.class);
 
+
     /**
      * 异步保存到数据库的方法
      * @param msg
