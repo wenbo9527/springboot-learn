@@ -10,4 +10,23 @@
         INSERT INTO MSG VALUES(#{msg.username},#{msg.msg})
     </insert>
 
+    <insert id="insertMsgMultiple" parameterType="java.util.List">
+        INSERT INTO MSG (username,msg,receive_name,receive_status,time)
+        VALUES
+        <foreach collection="msgs" index="index" item="item" separator=",">
+            #{item.username},#{item.msg},#{item.receivename},#{item.receivestatus},#{item.time}
+        </foreach>
+    </insert>
+
+    <select id="findOfflineMsgByReceiveName" parameterType="string" resultType="com.example.springbootwebsocketredis.entity.Msg">
+        SELECT * FROM MSG WHERE receive_name = #{receiveName} AND receive_status = #{receivestatus} ORDER BY time
+    </select>
+
+    <update id="updateReceiveStatusByMid" parameterType="java.util.List">
+        UPDATE MSG SET receive_status = '1' WHERE mid in
+        <foreach collection="mids" index="index" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </update>
+
 </mapper>

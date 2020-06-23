@@ -16,6 +16,7 @@ import javax.websocket.*;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
+import java.util.Date;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Controller
@@ -60,11 +61,15 @@ public class WebsocketServer {
         this.session = session;
         this.userId = userId;
         onlineUser.put(this,userId);
-        //订阅
+        //登录时订阅聊天室
         subscribeListener = new SubscribeListener();
         subscribeListener.setRedisTemplate(redisTemplate);
         subscribeListener.setSession(session);
         container.addMessageListener(subscribeListener,new ChannelTopic(topic));
+        //异步保存数据
+        Date date = new Date();
+        asyncService.updateOnlineTimeUser(userId,date);
+        //自动带出离线消息
         //将用户id存入redis
         ListOperations listOperations = redisTemplate.opsForList();
         listOperations.leftPush("user",userId);
@@ -83,7 +88,7 @@ public class WebsocketServer {
     @OnMessage
     public void onMessage(Session session,String message,@PathParam("topic") String topic,@PathParam("userId") String userId){
         message = userId + ":" + message;
-        asyncService.insertIntoMysql(message);
+        asyncService.insertMsg(message);
         redisTemplate.convertAndSend(topic,message);
     }
 

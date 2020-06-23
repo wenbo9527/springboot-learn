@@ -32,6 +32,7 @@ public class SubscribeListener implements MessageListener {
 
     @Override
     public void onMessage(Message message, byte[] bytes) {
+
         String msg = new String(message.getBody());
         if(null != session){
             try {
