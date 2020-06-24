@@ -36,4 +36,9 @@ public interface MsgDao {
      */
     public int updateReceiveStatusByMid(@Param("mids") List<String> mids);
 
+    /**
+     * 搜索用户离线消息
+     */
+    public List<Msg> findOfflineMsgByUser(@Param("last_mid") int last_mid);
+
 }

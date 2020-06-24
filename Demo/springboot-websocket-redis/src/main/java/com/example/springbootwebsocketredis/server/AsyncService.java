@@ -44,18 +44,21 @@ public class AsyncService{
     public void insertMsg(String msgInfo){
         logger.info("线程-" + Thread.currentThread().getId() + "正在执行插入语句");
         //转换成json
-        JSONObject msgJson = JSON.parseObject(msgInfo);
+//        JSONObject msgJson = JSON.parseObject(msgInfo);
         Date date = new Date();
         Msg msg = new Msg();
-        msg.setUsername(msgJson.getString("username"));
-        msg.setMsg(msgJson.getString("msg"));
+//        msg.setUsername(msgJson.getString("username"));
+//        msg.setMsg(msgJson.getString("msg"));
+        String[] msgs = msgInfo.split(":");
+        msg.setUsername(msgs[0]);
+        msg.setMsg(msgs[1]);
         msg.setTime(date);
         int i = msgDao.insertSingle(msg);
         //插入数据库成功
         if(i == 1){
             int mid = msg.getMid();
             ValueOperations valueOperations = redisTemplate.opsForValue();
-            int last_mid = valueOperations.get("");
+//            int last_mid = valueOperations.get("");
         }
         //将收到的mid写入redis
 

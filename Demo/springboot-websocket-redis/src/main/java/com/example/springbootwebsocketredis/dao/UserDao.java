@@ -1,10 +1,12 @@
 package com.example.springbootwebsocketredis.dao;
 
 import com.example.springbootwebsocketredis.entity.User;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface UserDao {
 
     public List<User> findAllUser();

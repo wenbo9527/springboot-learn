@@ -6,7 +6,8 @@
     </select>
 
     <insert id="insertUser" parameterType="com.example.springbootwebsocketredis.entity.User">
-        insert into User(username,status) values (#{user.username},#{user.status})
+        insert into User(username,last_offline_time,last_online_time,last_receive_msg_id)
+        values (#{user.username},#{user.last_offline_time},#{user.last_online_time},#{user.last_receive_msg_id})
     </insert>
 
     <update id="updateOfflineTimeUser" parameterType="com.example.springbootwebsocketredis.entity.User">

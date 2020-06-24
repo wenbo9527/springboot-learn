@@ -22,6 +22,10 @@
         SELECT * FROM MSG WHERE receive_name = #{receiveName} AND receive_status = #{receivestatus} ORDER BY time
     </select>
 
+    <select id="findOfflineMsgByUser" parameterType="int" resultType="com.example.springbootwebsocketredis.entity.Msg">
+        SELECT * FROM MSG WHERE mid > #{last_mid}
+    </select>
+
     <update id="updateReceiveStatusByMid" parameterType="java.util.List">
         UPDATE MSG SET receive_status = '1' WHERE mid in
         <foreach collection="mids" index="index" item="item" separator="," open="(" close=")">
